@@ -22,7 +22,7 @@ jobs:
 
       - name: Authenticate to Salesforce
         run: |
-          echo $SFDC_AUTH_URL | sfdx force:auth:jwt:grant --clientid $SF_CLIENT_ID --jwtkeyfile $SF_JWT_KEY --username $SF_USERNAME --setdefaultdevhubusername
+          echo $SFDC_AUTH_URL | sfdx force:auth:jwt:grant --username $SF_USERNAME --setdefaultdevhubusername
 
       - name: Run Linting
         run: |
