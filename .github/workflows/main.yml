@@ -22,11 +22,13 @@ jobs:
 
       - name: Authenticate to Salesforce
         run: |
-          echo $SFDC_AUTH_URL | --username $SF_USERNAME --setdefaultdevhubusername
+          echo $SF_USERNAME | sfdx force:auth:web:login --username $SF_USERNAME --password $SF_PASSWORD --securitytoken $SF_SECURITY_TOKEN --setdefaultusername --instanceurl $SFDC_AUTH_URL
 
-      - name: Run Linting
+      - name: Run Linting (LWC and Apex)
         run: |
-          sfdx force:apex:test:run --resultformat human --tests "TestDealTrigger"
+          # You can add linting commands here if needed, for example:
+          # npm run lint for LWC or sfdx force:apex:test:run for Apex tests
+          sfdx force:apex:test:run --resultformat human --wait 10
 
       - name: Run Unit Tests
         run: |
