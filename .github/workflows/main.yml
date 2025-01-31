@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Linting
         run: |
-          sfdx force:apex:test:run --resultformat human --tests "YourTestClass"
+          sfdx force:apex:test:run --resultformat human --tests "TestDealTrigger"
 
       - name: Run Unit Tests
         run: |
