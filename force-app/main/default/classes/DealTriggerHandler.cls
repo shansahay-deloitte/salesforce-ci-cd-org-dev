@@ -1,5 +1,5 @@
 public class DealTriggerHandler {
-    public static void preventDealCreation(List<Deal__c> dealRecord){
+    public static void preventDealGen(List<Deal__c> dealRecord){
         Set<Id> vehicleSet = new Set<Id>();
     	for(Deal__c deal: dealRecord){
         	if(deal.Vehicle__c != Null){
