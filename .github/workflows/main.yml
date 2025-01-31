@@ -1,0 +1,52 @@
+name: Salesforce CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Salesforce CLI
+        uses: sfdx-actions/setup-sfdx@v1
+        with:
+          sfdx-version: 'latest'
+
+      - name: Authenticate to Salesforce
+        run: |
+          echo $SFDC_AUTH_URL | sfdx force:auth:jwt:grant --clientid $SF_CLIENT_ID --jwtkeyfile $SF_JWT_KEY --username $SF_USERNAME --setdefaultdevhubusername
+
+      - name: Run Linting
+        run: |
+          sfdx force:apex:test:run --resultformat human --tests "YourTestClass"
+
+      - name: Run Unit Tests
+        run: |
+          sfdx force:apex:test:run --resultformat human --wait 10
+
+      - name: Deploy to Salesforce Sandbox
+        run: |
+          sfdx force:source:deploy -p force-app --targetusername $SF_USERNAME --testlevel RunLocalTests
+
+      - name: Send Notification on Success
+        uses: slackapi/slack-github-action@v1
+        with:
+          slack-token: ${{ secrets.SLACK_TOKEN }}
+          channel-id: 'your-slack-channel-id'
+          text: 'Deployment was successful!'
+
+      - name: Send Notification on Failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1
+        with:
+          slack-token: ${{ secrets.SLACK_TOKEN }}
+          channel-id: 'your-slack-channel-id'
+          text: 'Deployment failed!'
