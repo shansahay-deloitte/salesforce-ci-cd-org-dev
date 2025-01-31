@@ -1,7 +1,7 @@
 trigger DealTrigger on Deal__c (before insert, after update) {
     if(Trigger.isBefore) {
         if(Trigger.isInsert) {
-    		DealTriggerHandler.preventDealGeneration(Trigger.new);
+    		DealTriggerHandler.preventDealCreation(Trigger.new);
         }
     }
     if(Trigger.isAfter) {
