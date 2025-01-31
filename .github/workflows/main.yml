@@ -22,7 +22,7 @@ jobs:
 
       - name: Authenticate to Salesforce
         run: |
-          echo $SF_USERNAME | sfdx force:auth:web:login --username $SF_USERNAME --password $SF_PASSWORD --securitytoken $SF_SECURITY_TOKEN --setdefaultusername --instanceurl $SFDC_AUTH_URL
+          echo $SF_USERNAME | sfdx org:login:web --username $SF_USERNAME --password $SF_PASSWORD --securitytoken $SF_SECURITY_TOKEN --setdefaultusername --instanceurl $SFDC_AUTH_URL
 
       - name: Run Linting (LWC and Apex)
         run: |
