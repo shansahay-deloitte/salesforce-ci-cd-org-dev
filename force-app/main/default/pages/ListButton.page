@@ -1,0 +1,5 @@
+<apex:page action="{!fetchAndInsertVehicles}" controller="FetchVehicles">
+    <h1>
+        Insertion successful!
+    </h1>
+</apex:page>

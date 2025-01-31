@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Letterhead xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <backgroundColor>#CCCCCC</backgroundColor>
+    <bodyColor>#FFFFFF</bodyColor>
+    <bottomLine>
+        <color>#FFCC99</color>
+        <height>0</height>
+    </bottomLine>
+    <footer>
+        <backgroundColor>#FFCC99</backgroundColor>
+        <height>0</height>
+        <horizontalAlignment>Center</horizontalAlignment>
+        <verticalAlignment>Middle</verticalAlignment>
+    </footer>
+    <header>
+        <backgroundColor>#FFCC99</backgroundColor>
+        <height>0</height>
+        <horizontalAlignment>Center</horizontalAlignment>
+        <verticalAlignment>Middle</verticalAlignment>
+    </header>
+    <middleLine>
+        <color>#FFCC99</color>
+        <height>0</height>
+    </middleLine>
+    <name>Car Dealership</name>
+    <topLine>
+        <color>#FFCC99</color>
+        <height>0</height>
+    </topLine>
+</Letterhead>

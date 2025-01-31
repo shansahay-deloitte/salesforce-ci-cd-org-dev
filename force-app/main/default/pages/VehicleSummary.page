@@ -1,0 +1,33 @@
+<apex:page renderAs="pdf" standardController="Vehicle__c" extensions="VehicleSummaryController">
+    <apex:form >
+        <apex:pageBlock >
+            <h1 style="text-align: center;">Vehicle Summary</h1>
+            <table border="1" style="border-collapse:collapse; width:100%; text-align:left;">
+                <thead>
+                    <tr>
+                        <th>S. No.</th>
+                        <th>Vehicle Name</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Price</th>
+                        <th>VIN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <apex:variable var="rows" value="{!0}"/>
+                    <apex:repeat value="{!vehicle}" var="veh" >
+                        <tr>
+                            <td>{!rows + 1}</td>
+                            <td>{!veh.Name}</td>
+                            <td>{!veh.Make__c}</td>
+                            <td>{!veh.Model__c}</td>
+                            <td>{!veh.Price__c}</td>
+                            <td>{!veh.VIN__c}</td>
+                        </tr>
+                        <apex:variable var="rows" value="{!rows + 1}"/>
+                    </apex:repeat>
+                </tbody>
+            </table>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

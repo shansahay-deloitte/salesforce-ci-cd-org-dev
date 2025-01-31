@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Available Vehicles" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <lightning-input
+                type="text"
+                placeholder="Search Vehicle"
+                label="Search Vehicle"
+                onchange={handleSearch}
+            ></lightning-input>
+        </div>
+        <lightning-datatable 
+        key-field="Id" 
+        data={vehicleList.data} 
+        columns={columns} 
+        max-row-selection="1"
+        onrowselection={handleRowAction}>
+        </lightning-datatable>
+ 
+        <template if:true={vehicleRadio.data}>
+            <div class="slds-m-around_medium">
+                <h3><strong>Vehicle Information</strong></h3>
+                <p><strong>Vehicle Name:</strong> {vehicleRadio.data.Name}</p>
+                <p><strong>Model:</strong> {vehicleRadio.data.Model__c}</p>
+                <p><strong>Make:</strong> {vehicleRadio.data.Make__c}</p>
+                <p><strong>Price:</strong> {vehicleRadio.data.Price__c}</p>
+                <p><strong>VIN:</strong> {vehicleRadio.data.VIN__c}</p>
+            </div>
+        </template>
+</lightning-card>
+</template>

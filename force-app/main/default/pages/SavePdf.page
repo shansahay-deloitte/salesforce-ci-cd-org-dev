@@ -1,0 +1,8 @@
+<apex:page standardController="Vehicle__c" extensions="VehicleSummaryController"  >
+		<apex:form >
+            <div style="text-align: center">
+                <apex:commandButton action="{!SavePdf}" value="Save to Notes and Attachments"/>
+            </div>	
+		</apex:form> 
+	<apex:iframe src="/apex/VehicleSummary?id={!pId}"/>
+</apex:page>

@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<div style=""><font face="arial">Dear {!Deal__c.Customer__c},</font></div><div style=""><font face="arial"><br></font></div><div style=""><font face="arial">I hope this email finds you well.</font></div><div style=""><font face="arial">Thank you for showing your interest in {!Deal__c.Vehicle__c}. We will update you with further details.</font></div><div style=""><font face="arial"><br></font></div><div style=""><font face="arial">Regards,</font></div><div style=""><font face="arial">Car Dealership Management team</font></div>]]></td>
+</tr>
+</table>
