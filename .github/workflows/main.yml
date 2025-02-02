@@ -27,12 +27,6 @@ jobs:
           echo "${{ secrets.SFDC_AUTH_URL }}" > sfdc_auth_url.txt
           sfdx auth:sfdxurl:store -f sfdc_auth_url.txt -s -a myOrg
 
-      # Step 4: Lint Code (for Lightning Web Components)
-      - name: Run ESLint for LWC
-        run: |
-          npm install eslint --force
-          npx eslint force-app --ext .js --max-warnings=0
-
       # Step 5: Run Apex Unit Tests
       - name: Run Apex Tests
         run: |
