@@ -30,7 +30,7 @@ jobs:
       # Step 4: Lint Code (for Lightning Web Components)
       - name: Run ESLint for LWC
         run: |
-          npm install eslint
+          npm install eslint --force
           npx eslint force-app --ext .js --max-warnings=0
 
       # Step 5: Run Apex Unit Tests
