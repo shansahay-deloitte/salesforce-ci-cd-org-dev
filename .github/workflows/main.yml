@@ -21,12 +21,13 @@ jobs:
           sfdx-version: 'latest'
 
       - name: Authenticate to Salesforce
-        run: |
-          echo $SFDC_AUTH_URL | sfdx force:auth:jwt:grant --clientid $SF_CLIENT_ID --jwtkeyfile $SF_JWT_KEY --username $SF_USERNAME --setdefaultdevhubusername
+        uses: jawills/sf-deploy@v1.0
+        with: 
+          SFDC_AUTH_URL: ${{secrets.SFDC_AUTH_URL}}
 
       - name: Run Linting
         run: |
-          sfdx force:apex:test:run --resultformat human --tests "YourTestClass"
+          sfdx force:apex:test:run --resultformat human --tests "TestDealTrigger"
 
       - name: Run Unit Tests
         run: |
@@ -35,18 +36,3 @@ jobs:
       - name: Deploy to Salesforce Sandbox
         run: |
           sfdx force:source:deploy -p force-app --targetusername $SF_USERNAME --testlevel RunLocalTests
-
-      - name: Send Notification on Success
-        uses: slackapi/slack-github-action@v1
-        with:
-          slack-token: ${{ secrets.SLACK_TOKEN }}
-          channel-id: 'your-slack-channel-id'
-          text: 'Deployment was successful!'
-
-      - name: Send Notification on Failure
-        if: failure()
-        uses: slackapi/slack-github-action@v1
-        with:
-          slack-token: ${{ secrets.SLACK_TOKEN }}
-          channel-id: 'your-slack-channel-id'
-          text: 'Deployment failed!'
