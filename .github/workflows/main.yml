@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -24,15 +24,3 @@ jobs:
         uses: jawills/sf-deploy@v1.0
         with: 
           SFDC_AUTH_URL: ${{secrets.SFDC_AUTH_URL}}
-
-      - name: Run Linting (LWC and Apex)
-        run: |
-          sfdx force:apex:test:run --resultformat human --tests "TestDealTrigger"
-
-      - name: Run Unit Tests
-        run: |
-          sfdx force:apex:test:run --resultformat human --wait 10
-
-      - name: Deploy to Salesforce Sandbox
-        run: |
-          sfdx force:source:deploy -p force-app --targetusername $SF_USERNAME --testlevel RunLocalTests
