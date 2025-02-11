@@ -25,7 +25,7 @@ jobs:
       - name: Authenticate with Salesforce
         run: |
           echo "${{ secrets.SFDC_AUTH_URL }}" > sfdc_auth_url.txt
-          sfdx auth:sfdxurl:store -f sfdc_auth_url.txt -s -a myOrg
+          sfdx force:auth:sfdxurl:store -f sfdc_auth_url.txt -s -a myOrg
 
       # Step 5: Run Apex Unit Tests
       - name: Run Apex Tests
