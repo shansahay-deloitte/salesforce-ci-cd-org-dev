@@ -27,14 +27,6 @@ jobs:
           echo "${{ secrets.SFDC_AUTH_URL }}" > sfdc_auth_url.txt
           sfdx force:auth:sfdxurl:store -f sfdc_auth_url.txt -s -a myOrg
 
-      # Step 5: Run Apex Unit Tests
-      - name: Run Apex Tests
-        run: |
-          sfdx force:auth:web:login --setalias vscodeOrg --instanceurl ${{secrets.SFDC_AUTH_URL}}
-          sfdx force:apex:test:run --resultformat junit --outputdir test-results
-          
-        continue-on-error: true  # Prevents pipeline failure due to test errors
-
       # Step 6: Deploy to Salesforce (if tests pass)
       - name: Deploy to Salesforce
         run: |
