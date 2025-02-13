@@ -30,4 +30,4 @@ jobs:
       # Step 6: Deploy to Salesforce (if tests pass)
       - name: Deploy to Salesforce
         run: |
-          sfdx force:source:deploy -p force-app -u vscodeOrg
+          sfdx force:source:deploy -p force-app -u ${{secrets.SF_USERNAME}}
